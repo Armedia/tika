@@ -25,7 +25,7 @@
   <parent>
     <artifactId>tika-parsers-ml</artifactId>
     <groupId>org.apache.tika</groupId>
-    <version>3.3.3</version>
+    <version>${revision}</version>
   </parent>
 
   <artifactId>tika-transcribe-aws</artifactId>
