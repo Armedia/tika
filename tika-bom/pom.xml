@@ -30,7 +30,7 @@
   <url>https://tika.apache.org/</url>
 
   <properties>
-    <revision>3.3.3.1-SNAPSHOT</revision>
+    <revision>3.3.3.2-SNAPSHOT</revision>
   </properties>
 
   <licenses>
