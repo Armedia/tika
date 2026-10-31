@@ -29,6 +29,10 @@
   <description>Apache Tika Bill of Materials</description>
   <url>https://tika.apache.org/</url>
 
+  <properties>
+    <revision>3.3.3.1-SNAPSHOT</revision>
+  </properties>
+
   <licenses>
     <license>
       <name>Apache-2.0</name>
@@ -43,22 +47,22 @@
   </organization>
 
   <scm>
-    <connection>scm:git:https://github.com/apache/tika.git</connection>
-    <developerConnection>scm:git:https://github.com/apache/tika.git</developerConnection>
-    <url>https://github.com/apache/tika</url>
+    <connection>scm:git:https://github.com/ArkCase/tika.git</connection>
+    <developerConnection>scm:git:https://github.com/ArkCase/tika.git</developerConnection>
+    <url>https://github.com/ArkCase/tika</url>
     <tag>3.3.3-rc1</tag>
   </scm>
 
   <distributionManagement>
     <repository>
-      <id>apache.releases.https</id>
-      <name>Apache Release Distribution Repository</name>
-      <url>https://repository.apache.org/service/local/staging/deploy/maven2</url>
+      <id>arkcase.thirdparty</id>
+      <name>ArkCase Third Party Artifact Releases</name>
+      <url>https://nexus.armedia.com/repository/arkcase.thirdparty/</url>
     </repository>
     <snapshotRepository>
-      <id>apache.snapshots.https</id>
-      <name>Apache Development Snapshot Repository</name>
-      <url>https://repository.apache.org/content/repositories/snapshots</url>
+      <id>arkcase.thirdparty</id>
+      <name>ArkCase Third Party Artifact Snapshots</name>
+      <url>https://nexus.armedia.com/repository/arkcase.thirdparty/</url>
     </snapshotRepository>
   </distributionManagement>
 

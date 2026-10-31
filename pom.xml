@@ -30,6 +30,7 @@
   </parent>
 
   <artifactId>tika</artifactId>
+  <version>${revision}</version>
   <packaging>pom</packaging>
   <name>Apache Tika</name>
   <url>https://tika.apache.org</url>

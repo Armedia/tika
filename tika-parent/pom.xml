@@ -281,6 +281,7 @@
   </contributors>
 
   <properties>
+    <revision>3.3.3.1-SNAPSHOT</revision>
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.release>11</maven.compiler.release>
@@ -344,7 +345,7 @@
     <!-- can't update to 6, this requires jdk17 -->
     <ctakes.version>5.1.0</ctakes.version>
     <!-- can't update to 4.1.0, this requires jdk17 -->
-    <cxf.version>4.0.11</cxf.version>
+    <cxf.version>4.2.2</cxf.version>
     <ddplist.version>1.30</ddplist.version>
     <dl4j.version>1.0.0-M2.1</dl4j.version>
     <fakeload.version>0.7.0</fakeload.version>
@@ -371,6 +372,7 @@
     <jai.imageio.core.version>1.4.0</jai.imageio.core.version>
     <jakarta.activation.version>2.1.4</jakarta.activation.version>
     <jakarta.annotation.version>3.0.0</jakarta.annotation.version>
+    <jakarta.servlet.version>6.1.0</jakarta.servlet.version>
     <!-- can't update to 4.0.0, needs jdk17 -->
     <jakarta.ws.rs.version>3.1.0</jakarta.ws.rs.version>
     <jakarta.xml.bind.version>4.0.5</jakarta.xml.bind.version>
@@ -383,7 +385,7 @@
     <jdom2.version>2.0.6.1</jdom2.version>
     <jempbox.version>1.8.17</jempbox.version>
     <!-- 12.0.* needs java 17 -->
-    <jetty.version>11.0.26</jetty.version>
+    <jetty.version>12.1.10</jetty.version>
     <!-- 2.0.* needs java 17 -->
     <jhighlight.version>1.1.1</jhighlight.version>
     <jna.version>5.19.1</jna.version>
@@ -766,6 +768,11 @@
         <groupId>javax.measure</groupId>
         <artifactId>unit-api</artifactId>
         <version>${unit.api.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>${jakarta.servlet.version}</version>
       </dependency>
       <dependency>
         <groupId>jakarta.ws.rs</groupId>
@@ -1469,6 +1476,52 @@
   </build>
 
   <profiles>
+    <profile>
+      <id>armedia</id>
+      <activation>
+        <property>
+          <!-- Activates when this property is NOT defined -->
+          <name>!disable.armedia.build</name>
+        </property>
+      </activation>
+      <properties>
+        <distMgmtReleasesId>arkcase.thirdparty</distMgmtReleasesId>
+        <distMgmtReleasesName>ArkCase Third Party Libraries</distMgmtReleasesName>
+        <distMgmtReleasesUrl>https://nexus.armedia.com/repository/arkcase.thirdparty</distMgmtReleasesUrl>
+        <distMgmtSnapshotsId>${distMgmtReleasesId}</distMgmtSnapshotsId>
+        <distMgmtSnapshotsName>${distMgmtReleasesName}</distMgmtSnapshotsName>
+        <distMgmtSnapshotsUrl>${distMgmtReleasesUrl}</distMgmtSnapshotsUrl>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>flatten-maven-plugin</artifactId>
+            <version>1.8.0</version>
+            <configuration>
+              <updatePomFile>true</updatePomFile>
+              <flattenMode>resolveCiFriendliesOnly</flattenMode>
+            </configuration>
+            <executions>
+              <execution>
+                <id>flatten.process-resources</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>flatten</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>flatten.clean</id>
+                <phase>clean</phase>
+                <goals>
+                  <goal>clean</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
     <profile>
       <id>pedantic</id>
       <build>
